@@ -65,13 +65,33 @@ export interface createParams {
 }
 
 export interface SuperheroStats {
-  response: string;
+  response?: string;
   id: string;
   name: string;
-  intelligence: string;
-  strength: string;
-  speed: string;
-  durability: string;
-  power: string;
-  combat: string;
+  intelligence?: string;
+  strength?: string;
+  speed?: string;
+  durability?: string;
+  power?: string;
+  combat?: string;
+  "full-name"?: string;
+  "alter-egos"?: string;
+  aliases?: string[];
+  "place-of-birth"?: string;
+  "first-appearance"?: string;
+  publisher?: string;
+  alignment?: string;
+  gender?: string;
+  race?: string;
+  height?: string[];
+  weight?: string[];
+  "eye-color"?: string;
+  "hair-color"?: string;
+  occupation?: string;
+  base?: string;
+  "group-affiliation"?: string;
+  relatives?: string;
+  image?: {
+    url?: string;
+  };
 }
