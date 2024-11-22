@@ -1,50 +1,117 @@
-# React + TypeScript + Vite
+# SupesView : One Stop Realtime Super Hero Details
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Deployment 
 
-Currently, two official plugins are available:
+- Frontend
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+```sh
+https://supesview.pages.dev/
 
-## Expanding the ESLint configuration
+``` 
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
 
-- Configure the top-level `parserOptions` property like this:
+## Table of Contents
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+- [Video](#video)
+- [About](#about)
+- [Features](#features)
+- [Getting Started](#getting-started)
+  - [Prerequisites](#prerequisites) 
+  - [Installation](#installation)
+- [Screenshots](#screenshots)
+- [Contribution](#contribution)
+
+## Video
+### Demonstration 
+
+```sh
+https://youtu.be/YourDemoVideoLink
+
 ```
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+## About
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+SupesView is your ultimate superhero information hub, providing detailed profiles of superheroes from various universes. With SupesView, you can explore powers, origins, affiliations, and more in a sleek and user-friendly interface. Built with cutting-edge technologies like Vite, React, Tailwind CSS, ShadCN, TypeScript, and TanStack Query, SupesView delivers a fast and immersive experience. Dive into the world of heroes and villains, and discover everything you need to know about your favorite characters.
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
+## Features  
+
+List of the key features of **SupesView** and why it is efficient:  
+
+- **Comprehensive Superhero Search**: Quickly find superheroes with a robust search system that stores history for easy access to previous queries.  
+- **Favorites Feature**: Save your favorite superheroes to a personalized list for quick reference and effortless organization.  
+- **Smart Suggestions & History**: Get intelligent recommendations based on your search history and preferences for a more personalized experience.  
+- **Lightning-Fast Performance**: Built with Vite and React for seamless navigation and rapid loading times.  
+- **Responsive and User-Friendly Design**: Tailwind CSS ensures a sleek, modern interface that looks great and works smoothly on all devices.  
+- **Real-Time Data Fetching and Caching**: TanStack Query (React Query) enables efficient, up-to-date superhero information retrieval.  
+- **Extensive Superhero Database**: Access detailed profiles, including powers, origins, affiliations, and more, all in one place.  
+- **Enhanced User Experience**: Features like search history, favorites, and suggestions make exploring superheroes effortless and enjoyable.  
+
+
+## Getting Started
+
+### Prerequisites
+
+- Vite + React
+- Tailwind
+- TypeScript
+- npm 
+- bun
+- Cloudflare
+- ShadCN
+- Tanstack Query
+
+### Installation
+
+1. Clone the repository:
+
+   ```sh
+   git clone https://github.com/ArunavaCoderEm/supes-view.git
+   
+   ```
+
+2. Reach the directory:
+
+   ```sh
+   cd Supes-View
+
+   ```
+
+3. In Frontend  
+
+    ```sh
+    npm install
+
+    ```
+
+### After the installations
+
+1. For Frontend
+  ```sh
+  npm run dev
+  ```
+
+### For build
+
+1. For Frontend
+  ```sh
+  npm run build
+  npm start
+  ```
+
+
+### For testing
+
+1. For Frontend
+  ```sh
+  cd src/Test
+
+  bun TestEnv.ts
+  ```
+
+## Screenshots
+
+
+
+## Contribution
+
+Arunava Dutta && 💙
