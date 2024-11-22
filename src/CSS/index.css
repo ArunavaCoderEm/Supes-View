@@ -77,3 +77,24 @@
   font-family: "Supermercado One", sans-serif;
   font-style: normal;
 }
+
+.shab {
+  filter: drop-shadow(0px 0px 2px #000);
+}
+
+.animate_custom_pulse {
+  transition: all;
+  animation: pulseCustom 2000ms infinite; 
+}
+
+@keyframes pulseCustom {
+   0% {
+    opacity: 1;
+   }
+   50% {
+    opacity: 0.9;
+   } 
+   100% {
+    opacity: 1;
+   }
+}

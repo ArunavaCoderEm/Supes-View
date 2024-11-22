@@ -10,7 +10,7 @@ export default function Pages(): React.ReactNode {
  const { theme } = useTheme();
 
   return (
-    <div className="bg-gradient-to-b from-background via-backgroud to-muted p-2">
+    <div className="bg-background p-2">
       <BackgroundGrid color={(theme === 'dark' ? "gray" : "#000")} />
       <Navbar />
       <Routes>

@@ -18,7 +18,7 @@ export default function Hero(): React.ReactNode {
 
               <h1 className="text-5xl lg:text-7xl font-bold text-black dark:text-white leading-tight">
                 Vengeance Has <br />
-                <span className="text-transparent bg-clip-text bg-gradient-to-br from-orange-500 to-orange-700 dark:from-orange-300 dark:to-orange-500">
+                <span className="text-transparent bg-clip-text bg-gradient-to-br from-orange-500 to-orange-700 shab dark:from-orange-300 dark:to-orange-500">
                   {" "}
                   A New Name :
                 </span>
@@ -46,7 +46,7 @@ export default function Hero(): React.ReactNode {
                 </Button>
                 <Button
                   variant={"outline"}
-                  className="px-8 py-4 shadow-md border-2 rounded-lg font-semibold transition-all flex items-center justify-center"
+                  className="px-8 py-4 outline-2 outline-offset-0 outline-background shadow-md border-2 rounded-lg font-semibold transition-all flex items-center justify-center"
                 >
                   Explore More
                 </Button>
@@ -56,7 +56,7 @@ export default function Hero(): React.ReactNode {
               <img
                 src="/Images/batman_hero_pic.jpeg"
                 alt="batmanpic"
-                className="w-full max-w-lg shadow-lg lg:max-w-full h-80 lg:h-[32rem] object-cover rounded-lg"
+                className="w-full max-w-lg shadow-lg animate_custom_pulse lg:max-w-full h-80 lg:h-[32rem] object-cover rounded-lg"
               />
             </div>
           </div>
