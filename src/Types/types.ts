@@ -63,3 +63,15 @@ export interface createParams {
   key: string;
   value: string | number;
 }
+
+export interface SuperheroStats {
+  response: string;
+  id: string;
+  name: string;
+  intelligence: string;
+  strength: string;
+  speed: string;
+  durability: string;
+  power: string;
+  combat: string;
+}

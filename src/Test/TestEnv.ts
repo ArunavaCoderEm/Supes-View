@@ -1,8 +1,7 @@
 import { newSuperheroApi } from "@/Api/Superhero";
-import { API_CONFIG } from "@/Config/config";
 
 
-async function testGetSuperHeroDetail() {
+export async function testGetSuperHeroDetail() {
     try {
         const superheroId = 30; 
         const superhero = await newSuperheroApi.getSuperHeroDetailbyId(superheroId);
@@ -12,9 +11,8 @@ async function testGetSuperHeroDetail() {
     }
 }
 
-testGetSuperHeroDetail();
 
-async function testGetSearchSuperHeroDetail() {
+export async function testGetSearchSuperHeroDetail() {
     try {
         const search = "Ant Man"; 
         const superhero = await newSuperheroApi.getSuperHeroSearchResult(search);
@@ -24,8 +22,13 @@ async function testGetSearchSuperHeroDetail() {
     }
 }
 
-testGetSearchSuperHeroDetail();
 
-// const apikey = API_CONFIG.API_KEY;
-
-// console.log(apikey); 
+export async function testgetSuperHeroIdMorehResult() {
+    try {
+        const search = [70, ["powerstats"]]; 
+        const superhero = await newSuperheroApi.getSuperHeroIdMorehResult(search);
+        console.log(superhero); 
+    } catch (error) {
+        console.error("Error fetching superhero details: ", error);
+    }
+}
