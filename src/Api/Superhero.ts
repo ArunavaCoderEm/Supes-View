@@ -40,6 +40,7 @@ class SuperheroApi {
   }
 
   public async getSuperHeroDetailbyId(id: number): Promise<Superhero> {
+
     const url = this.createURL(`${API_CONFIG.BASE_URL}`, [
       {
         id: id,
@@ -83,6 +84,25 @@ class SuperheroApi {
     const response: SuperheroStats = await this.fetchSupes<SuperheroStats>(url);
   
     return response;
+  }
+
+  private getRandomNumber(min: number, max: number) {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+  }
+
+  public async getNRandomSupes(n: number): Promise<Superhero[]> {
+
+    let SupesRandomData: Superhero[] = []
+
+    for (let i = 0; i < n; i++) {
+      const rid = this.getRandomNumber(30, 70);
+      const response = await this.getSuperHeroDetailbyId(rid);
+
+      SupesRandomData.push(response);
+    }
+
+  
+    return SupesRandomData;
   }
 
 }

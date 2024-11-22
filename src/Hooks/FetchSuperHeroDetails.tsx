@@ -5,6 +5,7 @@ export const HeroKeys = {
     heroid: (id: number) => ["heroid", id] as const,
     herosearch: (search: string) => ["heroseach", search] as const,
     herosearchmore: (searchpar: string) => ["heroseachmore", searchpar] as const,
+    herosearchmoreRandom: (n: number) => ["heroseachmoreRandom", n] as const,
 }
 
 export function FetchSuperHeroDetailsQueryid (id: number | null) {
@@ -30,9 +31,19 @@ export function FetchSuperHeroDetailsQuerySearch (search: string | null) {
 export function FetchSuperHeroDetailsQuerySearchMore (searchPars: (number | string[])[]) {
 
     return useQuery({
-        queryKey: HeroKeys?.herosearch(String(searchPars[0]) ?? "70"),
+        queryKey: HeroKeys?.herosearchmore(String(searchPars[0]) ?? "70"),
         queryFn: () => searchPars ? newSuperheroApi?.getSuperHeroIdMorehResult(searchPars) : null,
         enabled: !! searchPars
+    })
+
+}
+
+export function FetchRandomSupesN (n: number) {
+
+    return useQuery({
+        queryKey: HeroKeys?.herosearchmoreRandom(n ?? 10),
+        queryFn: () => n ? newSuperheroApi?.getNRandomSupes(n) : null,
+        enabled: !! n
     })
 
 }
