@@ -3,6 +3,7 @@ import { Button } from "../ui/button";
 import { useTheme } from "@/Context/Theme-Provider";
 import { Moon, Sun } from "lucide-react";
 import SearchDialouge from "./SearchDialouge";
+import { Link } from "react-router-dom";
 
 export default function Navbar(): React.ReactNode {
   const { theme, setTheme } = useTheme();
@@ -13,11 +14,13 @@ export default function Navbar(): React.ReactNode {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
             <div className="flex items-center">
-              <img
-                src="/Assets/Supes_View_Logo.png"
-                className="w-6"
-                alt="Logo"
-              />
+              <Link to={"/"}>
+                <img
+                  src="/Assets/Supes_View_Logo.png"
+                  className="w-6"
+                  alt="Logo"
+                />
+              </Link>
             </div>
 
             <div className="flex items-center gap-6">

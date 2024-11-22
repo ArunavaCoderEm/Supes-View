@@ -2,8 +2,12 @@ import React from "react";
 import { ChevronRight, Shield } from "lucide-react";
 import { Button } from "../ui/button";
 import { Badge } from "../ui/badge";
+import { useNavigate } from "react-router-dom";
 
 export default function Hero(): React.ReactNode {
+
+  const nav = useNavigate();
+
   return (
     <>
       <div className="flex flex-col lg:flex-row items-center justify-between gap-12">
@@ -41,7 +45,7 @@ export default function Hero(): React.ReactNode {
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4">
-            <Button className="px-8 shadow-md py-4 bg-gradient-to-b hover:scale-95 from-orange-500 to-orange-700 font-semibold transition-all duration-200 flex items-center justify-center">
+            <Button onClick={() => nav('/details/71')} className="px-8 shadow-md py-4 bg-gradient-to-b hover:scale-95 from-orange-500 to-orange-700 font-semibold transition-all duration-200 flex items-center justify-center">
               Get Details
               <ChevronRight className="w-5 h-5" />
             </Button>
