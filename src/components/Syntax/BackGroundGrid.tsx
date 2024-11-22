@@ -19,7 +19,7 @@ const BackgroundGrid = ({
 
   return (
     <div
-      className={`pointer-events-none absolute inset-0 left-0 top-0 flex h-full w-full ${className}`}
+      className={`pointer-events-none absolute inset-0 left-0 top-0 flex h-80 w-full ${className}`}
       style={{
         backgroundImage: `url("${svgDataUrl}")`,
         backgroundRepeat: 'repeat',

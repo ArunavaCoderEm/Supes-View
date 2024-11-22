@@ -92,9 +92,10 @@ class SuperheroApi {
 
     let SupesRandomData: Superhero[] = []
 
+    const id = this.getRandomNumber(60, 80);
+
     for (let i = 0; i < n; i++) {
-      const rid = this.getRandomNumber(30, 70);
-      const response = await this.getSuperHeroDetailbyId(rid);
+      const response = await this.getSuperHeroDetailbyId(id+i);
 
       SupesRandomData.push(response);
     }

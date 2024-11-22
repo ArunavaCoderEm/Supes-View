@@ -102,3 +102,9 @@ export interface SupesGet {
   isloading: boolean,
   error: string | null
 }
+
+export interface NavigationItem {
+  name: string
+  href: string
+  icon?: (props: React.SVGProps<SVGSVGElement>) => JSX.Element
+}
