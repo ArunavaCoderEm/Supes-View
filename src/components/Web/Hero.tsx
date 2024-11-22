@@ -1,6 +1,6 @@
 import React from "react";
 import { ChevronRight, Shield } from "lucide-react";
-import { Button } from "../ui/button";
+import { Button } from "../UI/button";
 
 export default function Hero(): React.ReactNode {
   return (
@@ -56,7 +56,7 @@ export default function Hero(): React.ReactNode {
               <img
                 src="/Images/batman_hero_pic.jpeg"
                 alt="batmanpic"
-                className="w-full max-w-lg shadow-lg lg:max-w-full h-80 lg:h-[32rem] animate-pulse object-cover rounded-lg"
+                className="w-full max-w-lg shadow-lg lg:max-w-full h-80 lg:h-[32rem] object-cover rounded-lg"
               />
             </div>
           </div>

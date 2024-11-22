@@ -7,8 +7,8 @@ import {
   CommandItem,
   CommandList,
   CommandSeparator,
-} from "../ui/command";
-import { Button } from "../ui/button";
+} from "../UI/command";
+import { Button } from "../UI/button";
 import { Search } from "lucide-react";
 
 export default function SearchDialouge(): React.ReactNode {
@@ -16,10 +16,14 @@ export default function SearchDialouge(): React.ReactNode {
 
   return (
     <>
-      <Button onClick={() => setOpen(true)} variant={"outline"} className="text-muted-foreground flex items-center justify-start w-48 cursor-text">
+      <Button
+        onClick={() => setOpen(true)}
+        variant={"outline"}
+        className="text-muted-foreground flex items-center justify-start w-48 cursor-text"
+      >
         <Search />
         Search here ...
-        </Button>
+      </Button>
       <CommandDialog open={open} onOpenChange={setOpen}>
         <CommandInput placeholder="Type a superhero or search..." />
         <CommandList>
