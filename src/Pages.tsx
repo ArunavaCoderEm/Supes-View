@@ -5,6 +5,7 @@ import Home from "./Pages/Home";
 import BackgroundGrid from "./components/Syntax/BackGroundGrid";
 import { useTheme } from "./Context/Theme-Provider";
 import Footer from "./components/Syntax/Footer";
+import DetailsPageSupes from "./Pages/DetailsPageSupes";
 
 export default function Pages(): React.ReactNode {
   const { theme } = useTheme();
@@ -17,6 +18,7 @@ export default function Pages(): React.ReactNode {
           <BackgroundGrid color={theme === "dark" ? "gray" : "#000"} />
           <Routes>
             <Route path={"/"} element={<Home />} />
+            <Route path={"/details/:id"} element={<DetailsPageSupes />} />
           </Routes>
         </div>
       </div>

@@ -108,3 +108,11 @@ export interface NavigationItem {
   href: string
   icon?: (props: React.SVGProps<SVGSVGElement>) => JSX.Element
 }
+
+
+export interface StatCardProps {
+  icon: React.ReactNode;
+  label: string;
+  value: number | string;
+  showProgress?: boolean;
+}
