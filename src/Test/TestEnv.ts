@@ -1,6 +1,6 @@
 // import { newSuperheroApi } from "@/Api/Superhero";
 
-import { FetchRandomSupesN } from "@/Hooks/FetchSuperHeroDetails";
+// import { FetchRandomSupesN } from "@/Hooks/FetchSuperHeroDetails";
 
 
 // export async function testGetSuperHeroDetail() {

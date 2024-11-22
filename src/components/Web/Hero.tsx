@@ -62,6 +62,7 @@ export default function Hero(): React.ReactNode {
             src="/Images/batman_hero_pic.jpeg"
             alt="batmanpic"
             className="w-full max-w-lg shadow-lg animate_custom_pulse lg:max-w-full h-80 lg:h-[32rem] object-cover rounded-lg"
+            loading="lazy"
           />
         </div>
       </div>
