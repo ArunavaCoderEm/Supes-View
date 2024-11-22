@@ -1,19 +1,27 @@
 import React from "react";
 import { ChevronRight, Shield } from "lucide-react";
+import { useTheme } from "@/Context/Theme-Provider";
 
 export default function Hero(): React.ReactNode {
+
+  const { theme } = useTheme();
+
+  const backgroundImage = (theme === "dark")
+    ? "url('https://images.unsplash.com/photo-1509347528160-9a9e33742cdb?ixlib=rb-1.2.1&auto=format&fit=crop&w=2850&q=80')"
+    : "url('https://images.unsplash.com/photo-1568515387631-8b650bbcdb90?ixlib=rb-1.2.1&auto=format&fit=crop&w=2850&q=80')";
+
   return (
     <>
       <div className="relative min-h-screen">
-        <div
-          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-          style={{
-            backgroundImage:
-              'url("https://images.unsplash.com/photo-1509347528160-9a9e33742cdb?ixlib=rb-1.2.1&auto=format&fit=crop&w=2850&q=80")',
-          }}
-        >
-          {/* url("https://images.unsplash.com/photo-1568515387631-8b650bbcdb90?ixlib=rb-1.2.1&auto=format&fit=crop&w=2850&q=80") */}
-          <div className="absolute inset-0 bg-black/70"></div>
+        <div>
+          <div
+            className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+            style={{
+              backgroundImage: backgroundImage,
+            }}
+          >
+            <div className="absolute inset-0 bg-black/70"></div>
+          </div>
         </div>
 
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-32">

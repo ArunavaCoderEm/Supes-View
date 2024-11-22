@@ -4,7 +4,7 @@ import { useTheme } from '@/Context/Theme-Provider'
 
 export default function Navbar():React.ReactNode {
 
-    const { theme, setTheme } = useTheme();
+  const { theme, setTheme } = useTheme();
 
   return (
     <>
