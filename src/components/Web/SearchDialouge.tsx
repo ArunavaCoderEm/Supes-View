@@ -9,10 +9,19 @@ import {
   CommandSeparator,
 } from "../ui/command";
 import { Button } from "../ui/button";
-import { Search } from "lucide-react";
+import { Loader2, Search, SearchIcon } from "lucide-react";
+import { FetchSuperHeroDetailsQuerySearch } from "@/Hooks/FetchSuperHeroDetails";
+import { useNavigate } from "react-router-dom";
 
 export default function SearchDialouge(): React.ReactNode {
   const [open, setOpen] = useState<boolean>(false);
+
+  const [query, setQuery] = useState<string>("");
+
+  const nav = useNavigate();
+
+  const { data, isLoading, isError, error } =
+    FetchSuperHeroDetailsQuerySearch(query);
 
   return (
     <>
@@ -25,14 +34,45 @@ export default function SearchDialouge(): React.ReactNode {
         Search here ...
       </Button>
       <CommandDialog open={open} onOpenChange={setOpen}>
-        <CommandInput placeholder="Type a superhero or search..." />
+        <CommandInput
+          value={query}
+          onValueChange={setQuery}
+          placeholder="Type a superhero or search..."
+        />
         <CommandList>
-          <CommandEmpty>No results found.</CommandEmpty>
-          <CommandGroup heading="Suggestions">
+          {query.length > 2 && !isLoading && (
+            <CommandEmpty>No hero found.</CommandEmpty>
+          )}
+          <CommandSeparator />
+          <CommandGroup className="my-2" heading="Favourites">
             <CommandItem>
               <span>Calendar</span>
             </CommandItem>
           </CommandGroup>
+          <CommandSeparator />
+          <CommandGroup className="my-2" heading="Favourites">
+            <CommandItem>
+              <span>Calendar</span>
+            </CommandItem>
+          </CommandGroup>
+          <CommandSeparator />
+          {data && data?.length > 0 && (
+            <CommandGroup className="my-2" heading="Suggessions">
+              {isLoading && (
+                <div className="p-3 flex justify-center items-center">
+                  <Loader2 className="w-4 h-4 animate-spin text-muted-foreground" />
+                </div>
+              )}
+              {data?.map((item, index) => {
+                return (
+                  <CommandItem onSelect={() => {nav(`/details/${item?.id}`); setOpen(false)}} key={index}>
+                    <SearchIcon className="w-4 h-4 text-muted-foreground" />
+                    <span>{item?.name}</span>
+                  </CommandItem>
+                );
+              })}
+            </CommandGroup>
+          )}
           <CommandSeparator />
         </CommandList>
       </CommandDialog>
