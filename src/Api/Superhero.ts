@@ -1,20 +1,20 @@
 import { API_CONFIG } from "@/Config/config";
-import { Superhero } from "@/Types/types";
+import { searchRes, Superhero } from "@/Types/types";
 import axios from "axios";
 
 class SuperheroApi {
-  private createURL(endpoint: string, params: any[]): string {
 
+  private createURL(endpoint: string, params: any[]): string {
     let url = `${endpoint}/${API_CONFIG.API_KEY}`;
 
     console.log(params);
 
     params.forEach((param: any) => {
       const key = Object.keys(param)[0];
-      if(key === "id") {
-        url += `/${param[key]}`
+      if (key === "id") {
+        url += `/${param[key]}`;
       } else {
-        url += `/${key}/${param[key]}`
+        url += `/${key}/${param[key]}`;
       }
     });
 
@@ -45,7 +45,26 @@ class SuperheroApi {
     return response;
   }
 
-  public async getSuperHeroSearchResult() {}
+  public async getSuperHeroSearchResult(search: string): Promise<Superhero[]> {
+
+    const newSearch = search.split(" ");
+
+    const searchPar = newSearch.join('');
+
+    const url = this.createURL(`${API_CONFIG.BASE_URL}`, [
+      {
+        search: searchPar,
+      },
+    ]);
+
+    const response = await this.fetchSupes<searchRes>(url);
+
+    const returnResponse = response?.results;
+  
+    return returnResponse;
+  }
+
 }
+  
 
 export const newSuperheroApi = new SuperheroApi();

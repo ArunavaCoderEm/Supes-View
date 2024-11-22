@@ -13,7 +13,6 @@ export interface BackgroundGridProps {
 }
 
 export interface Superhero {
-  response: string;
   id: string;
   name: string;
   powerstats: {
@@ -54,7 +53,13 @@ export interface Superhero {
   };
 }
 
+export interface searchRes {
+  response: string;
+  "results-for": string;
+  results: Superhero[];
+}
+
 export interface createParams {
-    key: string,
-    value: string | number
+  key: string;
+  value: string | number;
 }
