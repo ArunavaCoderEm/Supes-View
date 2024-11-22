@@ -1,20 +1,36 @@
+import { Badge } from "@/components/ui/badge";
+import { Skeleton } from "@/components/ui/skeleton";
+import StatCard from "@/components/Web/HeroDetails";
 import { FetchSuperHeroDetailsQueryid } from "@/Hooks/FetchSuperHeroDetails";
 import { Shield, Trophy } from "lucide-react";
 import React from "react";
 import { useParams } from "react-router-dom";
 
 export default function DetailsPageSupes(): React.ReactNode {
+  const { id } = useParams();
 
-    const { id } = useParams();
-    
-    const { data, isLoading, isError, error } = FetchSuperHeroDetailsQueryid(Number(id) ?? 0);
+  const { data, isLoading, isError, error } = FetchSuperHeroDetailsQueryid(
+    Number(id) ?? 0
+  );
+
+  if (isError) {
+    console.log(error);
+  }
+
+  if (isLoading) {
+    return <Skeleton />
+  }
+
+  const toUp = (s: string) => {
+    const news: string = s[0].toUpperCase() + s.slice(1);
+    return news;
+  };
 
   return (
     <>
       <div className="min-h-screen bg-black text-gray-200">
         <div className="max-w-7xl mx-auto px-4 py-8">
           <div className="grid lg:grid-cols-2 gap-12">
-  
             <div className="relative group">
               <div className="aspect-[3/4] rounded-2xl overflow-hidden">
                 <img
@@ -25,13 +41,37 @@ export default function DetailsPageSupes(): React.ReactNode {
               </div>
               <div className="absolute top-4 right-4 bg-black/80 backdrop-blur-sm px-4 py-2 rounded-full flex items-center space-x-2">
                 <Trophy className="h-5 w-5 text-gray-300" />
-                <span className="text-gray-300 font-semibold">
-                  {data?.id}
-                </span>
+                <span className="text-gray-300 font-semibold">{data?.id}</span>
+              </div>
+              <div className="mt-5">
+                <h2 className="text-xl font-semibold text-white mb-4">
+                  Character Info
+                </h2>
+                <div className="flex flex-wrap gap-3">
+                  {data?.appearance &&
+                    Object.entries(data?.appearance).map(
+                      ([key, value], index) => {
+                        if (value && value.length >= 2) {
+                          return (
+                            <div key={index}>
+                              <p>
+                                <strong>
+                                  {key.replace(/-/g, " ").toUpperCase()}:
+                                </strong>{" "}
+                                {Array.isArray(value)
+                                  ? value.join(", ")
+                                  : value}
+                              </p>
+                            </div>
+                          );
+                        }
+                        return null;
+                      }
+                    )}
+                </div>
               </div>
             </div>
 
-            {/* Hero Details Section */}
             <div className="space-y-8">
               <div>
                 <div className="flex items-center space-x-4 mb-4">
@@ -41,47 +81,70 @@ export default function DetailsPageSupes(): React.ReactNode {
                   </h1>
                 </div>
                 <p className="text-lg text-gray-400 leading-relaxed">
-                  {/* {data?.description} */}
+                  {data?.connections?.["group-affiliation"]}
                 </p>
               </div>
 
-              {/* Stats Grid */}
+              <div className="grid gap-2 md:grid-cols-2 grid-cols-1">
+                {data?.powerstats &&
+                  Object.keys(data.powerstats).map((item, index) => {
+                    const statValue = Number(
+                      data.powerstats[item as keyof typeof data.powerstats]
+                    );
+                    return (
+                      <div key={index}>
+                        <StatCard
+                          label={toUp(item)}
+                          value={Number(statValue)}
+                          icon={<></>}
+                        />
+                      </div>
+                    );
+                  })}
+              </div>
 
-              {/* Abilities Section */}
-              <div>
+              <div className="py-1">
                 <h2 className="text-xl font-semibold text-white mb-4">
-                  Special Abilities
+                  Relatives
                 </h2>
-                <div className="flex flex-wrap gap-3">
-                  {/* {selectedHero.abilities.map((ability, index) => (
-                    <span
-                      key={index}
-                      className="px-4 py-2 rounded-full text-sm bg-zinc-900 text-gray-300 border border-zinc-800"
-                    >
-                      {ability}
-                    </span>
-                  ))} */}
+                <div className="flex flex-wrap gap-2 p-2">
+                  {data?.connections?.relatives
+                    .split(",")
+                    ?.map((item, index) => {
+                      return (
+                        <div key={index} className="">
+                          <Badge>{item}</Badge>
+                        </div>
+                      );
+                    })}
                 </div>
               </div>
 
-              {/* Hero Selection */}
-              <div className="pt-8">
+              <div>
                 <h2 className="text-xl font-semibold text-white mb-4">
-                  Other Heroes
+                  Personal Info
                 </h2>
-                <div className="grid grid-cols-2 gap-4">
-                  {/* {heroes
-                    .filter((h) => h.id !== selectedHero.id)
-                    .map((hero) => (
-                      <div
-                        key={hero.id}
-                        onClick={() => setSelectedHero(hero)}
-                        className="bg-zinc-900 p-3 rounded-lg cursor-pointer hover:bg-zinc-800 transition-colors"
-                      >
-                        <h3 className="font-medium text-white">{hero.name}</h3>
-                        <p className="text-sm text-gray-400">{hero.rank}</p>
-                      </div>
-                    ))} */}
+                <div className="flex flex-wrap gap-3">
+                  {data?.biography &&
+                    Object.entries(data?.biography).map(
+                      ([key, value], index) => {
+                        if (value && value.length >= 2) {
+                          return (
+                            <div key={index}>
+                              <p>
+                                <strong>
+                                  {key.replace(/-/g, " ").toUpperCase()}:
+                                </strong>{" "}
+                                {Array.isArray(value)
+                                  ? value.join(", ")
+                                  : value}
+                              </p>
+                            </div>
+                          );
+                        }
+                        return null;
+                      }
+                    )}
                 </div>
               </div>
             </div>

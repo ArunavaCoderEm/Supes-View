@@ -18,11 +18,7 @@ export default function HomeBelowHero(): React.ReactNode {
   if (isError) {
     console.error("Error:", error);
   }
-
-  if (data) {
-    console.log("Fetched Data:", data);
-  }
-
+  
   return (
     <>
       <div className="my-10 container">

@@ -45,7 +45,7 @@ export interface Superhero {
     base: string;
   };
   connections: {
-    groupAffiliation: string;
+    "group-affiliation": string;
     relatives: string;
   };
   image: {
@@ -113,6 +113,6 @@ export interface NavigationItem {
 export interface StatCardProps {
   icon: React.ReactNode;
   label: string;
-  value: number | string;
+  value ?: number | string;
   showProgress?: boolean;
 }
