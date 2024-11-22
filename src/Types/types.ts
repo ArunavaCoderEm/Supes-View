@@ -95,3 +95,10 @@ export interface SuperheroStats {
     url?: string;
   };
 }
+
+
+export interface SupesGet {
+  superherodata: Superhero | null,
+  isloading: boolean,
+  error: string | null
+}
