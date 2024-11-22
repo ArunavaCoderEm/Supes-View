@@ -34,9 +34,11 @@ export default function HomeBelowHero(): React.ReactNode {
   return (
     <>
       <div className="my-10 container">
-        <h1 className="text-transparent text-5xl font-bold leading-tight bg-clip-text bg-gradient-to-br from-orange-500 to-orange-700 dark:from-orange-300 dark:to-orange-500">
+        <h1 className="mt-4 text-transparent text-5xl font-bold leading-tight bg-clip-text bg-gradient-to-br from-orange-500 to-orange-700 dark:from-orange-300 dark:to-orange-500">
           Your Favourite Superheroes :
         </h1>
+
+        {!favs.length && <p className="text-foreground px-2 mt-5 text-lg">No Favourites, Add Some !!</p>}
 
         {!isLoading && favs && !isError && (
           <div className="grid mt-10 md:grid-cols-3 grid-cols-2 lg:grid-cols-4 gap-4">
@@ -75,7 +77,7 @@ export default function HomeBelowHero(): React.ReactNode {
             })}
           </div>
         )}
-        <h1 className="text-transparent text-5xl font-bold leading-tight bg-clip-text bg-gradient-to-br from-orange-500 to-orange-700 dark:from-orange-300 dark:to-orange-500">
+        <h1 className="mt-4 text-transparent text-5xl font-bold leading-tight bg-clip-text bg-gradient-to-br from-orange-500 to-orange-700 dark:from-orange-300 dark:to-orange-500">
           Top Superheroes Today:
         </h1>
         {!isLoading && data && !isError && (
@@ -117,7 +119,7 @@ export default function HomeBelowHero(): React.ReactNode {
               <div className="mt-4 text-center">
                 <Button
                   onClick={loadMore}
-                  className="px-4 py-2 bg-muted text-orange-500"
+                  className="px-4 py-2 shadow-lg bg-muted text-orange-500"
                 >
                   Load More
                 </Button>

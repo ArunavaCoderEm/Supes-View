@@ -9,10 +9,19 @@ import {
   CommandSeparator,
 } from "../ui/command";
 import { Button } from "../ui/button";
-import { Clock, Loader2, Search, SearchIcon, XCircle } from "lucide-react";
+import {
+  Clock,
+  Cross,
+  Loader2,
+  Search,
+  SearchIcon,
+  XCircle,
+} from "lucide-react";
 import { FetchSuperHeroDetailsQuerySearch } from "@/Hooks/FetchSuperHeroDetails";
 import { useNavigate } from "react-router-dom";
 import { UseSearchHIstory } from "@/Hooks/UseSearchHIstory";
+import { UseFav } from "@/Hooks/UseFav";
+import { toast } from "sonner";
 
 export default function SearchDialouge(): React.ReactNode {
   const [open, setOpen] = useState<boolean>(false);
@@ -21,11 +30,13 @@ export default function SearchDialouge(): React.ReactNode {
 
   const [query, setQuery] = useState<string>("");
 
+  const { favs, removeFav } = UseFav();
+
   const nav = useNavigate();
 
   const handleSelectItem = (item: any): void => {
     addHistory.mutate({
-      ...item
+      ...item,
     });
 
     nav(`/details/${item?.id}`);
@@ -61,9 +72,42 @@ export default function SearchDialouge(): React.ReactNode {
           )}
           <CommandSeparator />
           <CommandGroup className="my-2" heading="Favourites">
-            <CommandItem>
-              <span>Calendar</span>
-            </CommandItem>
+            {favs?.length ? (
+              <>
+                {favs.map((item, index) => {
+                  return (
+                    <div className="flex w-full justify-between items-center px-3">
+                      <CommandItem
+                        className="cursor-pointer"
+                        onSelect={() => handleSelectItem(item)}
+                        key={index}
+                      >
+                        <div className="flex gap-2 items-center">
+                          <Cross className="w-4 h-4 text-muted-foreground" />
+                          <span>{item?.name}</span>
+                        </div>
+                      </CommandItem>
+                      <Button
+                        onClick={() => {
+                          removeFav.mutate(item.id);
+                          toast.error("Removed From Favs");
+                          setOpen(false);
+                        }}
+                        variant={"destructive"}
+                        className="rounded-full"
+                      >
+                        <XCircle className="w-4 h-4 text-muted-foreground" />
+                      </Button>
+                    </div>
+                  );
+                })}
+              </>
+            ) : (
+              <CommandItem>
+                <Cross className="w-4 h-4 text-muted-foreground" />
+                <span>No Favs</span>
+              </CommandItem>
+            )}
           </CommandGroup>
           <CommandSeparator />
           {history.length > 0 && (
@@ -73,7 +117,10 @@ export default function SearchDialouge(): React.ReactNode {
                 <Button
                   variant={"ghost"}
                   size={"sm"}
-                  onClick={() => {clearHistory.mutate(); setOpen(false)}}
+                  onClick={() => {
+                    clearHistory.mutate();
+                    setOpen(false);
+                  }}
                   className="text-foreground"
                 >
                   <XCircle className="w-4 h-4 text-muted-foreground" />
