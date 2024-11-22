@@ -28,14 +28,12 @@ class SuperheroApi {
   }
 
   private async fetchSupes<T>(url: string): Promise<T> {
-    const response = await fetch(url);
-
-    if (!response.ok) {
+    const proxyUrl = `https://api.allorigins.win/raw?url=${encodeURIComponent(url)}`;
+    const response = await axios.get(proxyUrl);
+    if (response.status !== 200) {
       throw new Error(`Error happened with code ${response.status}`);
     }
-
-    const returnResponse = response.json();
-
+    const returnResponse = response.data;
     return returnResponse;
   }
 

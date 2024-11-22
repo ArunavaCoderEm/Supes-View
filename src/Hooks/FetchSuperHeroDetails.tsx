@@ -6,7 +6,7 @@ export const HeroKeys = {
     herosearch: (search: string) => ["heroseach", search] as const,
     herosearchmore: (searchpar: string) => ["heroseachmore", searchpar] as const,
     herosearchmoreRandom: (n: number) => ["heroseachmoreRandom", n] as const,
-}
+} as const
 
 export function FetchSuperHeroDetailsQueryid (id: number | null) {
 
