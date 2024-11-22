@@ -23,6 +23,10 @@ export default function SearchDialouge(): React.ReactNode {
   const { data, isLoading, isError, error } =
     FetchSuperHeroDetailsQuerySearch(query);
 
+  if (isError) {
+    console.log(error);
+  }
+
   return (
     <>
       <Button
@@ -65,7 +69,7 @@ export default function SearchDialouge(): React.ReactNode {
               )}
               {data?.map((item, index) => {
                 return (
-                  <CommandItem onSelect={() => {nav(`/details/${item?.id}`); setOpen(false)}} key={index}>
+                  <CommandItem className="cursor-pointer" onSelect={() => {nav(`/details/${item?.id}`); setOpen(false)}} key={index}>
                     <SearchIcon className="w-4 h-4 text-muted-foreground" />
                     <span>{item?.name}</span>
                   </CommandItem>
