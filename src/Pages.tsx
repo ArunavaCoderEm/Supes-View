@@ -6,16 +6,17 @@ import BackgroundGrid from "./components/Syntax/BackGroundGrid";
 import { useTheme } from "./Context/Theme-Provider";
 
 export default function Pages(): React.ReactNode {
-
- const { theme } = useTheme();
+  const { theme } = useTheme();
 
   return (
-    <div className="bg-background p-2">
-      <BackgroundGrid color={(theme === 'dark' ? "gray" : "#000")} />
-      <Navbar />
-      <Routes>
-        <Route path={"/"} element={<Home />} />
-      </Routes>
+    <div className="relative min-h-screen">
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-32">
+        <BackgroundGrid color={theme === "dark" ? "gray" : "#000"} />
+        <Navbar />
+        <Routes>
+          <Route path={"/"} element={<Home />} />
+        </Routes>
+      </div>
     </div>
   );
 }

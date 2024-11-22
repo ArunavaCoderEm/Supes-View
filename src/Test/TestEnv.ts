@@ -48,6 +48,6 @@ import { FetchRandomSupesN } from "@/Hooks/FetchSuperHeroDetails";
 
 // getrandomSuperhero();
 
-const res = FetchRandomSupesN(2);
+// const res = FetchRandomSupesN(2);
 
-console.log(res);
+// console.log(res);
