@@ -8,11 +8,11 @@ export default function CustomProvider({
 }: mainChildren): React.ReactNode {
   return (
     <BrowserRouter>
-    <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
-      <StrictMode>
-        {children}
-      </StrictMode>
-    </ThemeProvider>
-  </BrowserRouter>
+      <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
+        <StrictMode>
+          {children}
+        </StrictMode>
+      </ThemeProvider>
+    </BrowserRouter>
   );
 }

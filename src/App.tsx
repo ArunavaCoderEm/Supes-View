@@ -1,14 +1,11 @@
-import React from "react"
-import { Button } from "./components/ui/button"
+import React from "react";
 
-function App():React.ReactNode {
-
-
+function App(): React.ReactNode {
   return (
     <>
-      <Button>Hello</Button>
+
     </>
-  )
+  );
 }
 
-export default App
+export default App;
