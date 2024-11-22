@@ -1,5 +1,5 @@
 import { useLocalStorage } from "@/Helper/UseLocalStorage"
-import { QueryClient, useMutation, useQuery } from "@tanstack/react-query"
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query"
 
 export function UseSearchHIstory() {
 
@@ -8,7 +8,7 @@ export function UseSearchHIstory() {
     []
   )
 
-  const queryCl = new QueryClient();
+  const queryCl = useQueryClient();
 
   const history = useQuery({
     queryKey: ["search-history"],
@@ -27,10 +27,10 @@ export function UseSearchHIstory() {
         const newh = [newSearch, ...filteredHis].slice(0, 10);
 
         setStore(newh);
-        return store;
+        return newh;
     },
     onSuccess: (newh) => {
-        queryCl.setQueryData(["search-hostory"], newh);
+        queryCl.setQueryData(["search-history"], newh);
     }
   })
 
@@ -40,7 +40,7 @@ export function UseSearchHIstory() {
         return [];
     },
     onSuccess: () => {
-        queryCl.setQueryData(["search-hostory"], []);
+        queryCl.setQueryData(["search-history"], []);
     }
   })
 
