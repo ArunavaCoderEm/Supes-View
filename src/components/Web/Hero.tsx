@@ -1,29 +1,11 @@
 import React from "react";
 import { ChevronRight, Shield } from "lucide-react";
-import { useTheme } from "@/Context/Theme-Provider";
 
 export default function Hero(): React.ReactNode {
-
-  const { theme } = useTheme();
-
-  const backgroundImage = (theme === "dark")
-    ? "url('https://images.unsplash.com/photo-1509347528160-9a9e33742cdb?ixlib=rb-1.2.1&auto=format&fit=crop&w=2850&q=80')"
-    : "url('https://images.unsplash.com/photo-1568515387631-8b650bbcdb90?ixlib=rb-1.2.1&auto=format&fit=crop&w=2850&q=80')";
 
   return (
     <>
       <div className="relative min-h-screen">
-        <div>
-          <div
-            className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-            style={{
-              backgroundImage: backgroundImage,
-            }}
-          >
-            <div className="absolute inset-0 bg-black/70"></div>
-          </div>
-        </div>
-
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-32">
           <div className="flex flex-col lg:flex-row items-center justify-between gap-12">
             <div className="lg:w-1/2 space-y-8">
@@ -34,7 +16,7 @@ export default function Hero(): React.ReactNode {
                 </span>
               </div>
 
-              <h1 className="text-5xl lg:text-7xl font-bold text-white leading-tight">
+              <h1 className="text-5xl lg:text-7xl font-bold text-black dark:text-white leading-tight">
                 Vengeance Has
                 <span className="text-yellow-500"> A New Name</span>
               </h1>
