@@ -18,7 +18,7 @@ export default function DetailsPageSupes(): React.ReactNode {
   }
 
   if (isLoading) {
-    return <Skeleton />
+    return <Skeleton />;
   }
 
   const toUp = (s: string) => {
@@ -27,8 +27,11 @@ export default function DetailsPageSupes(): React.ReactNode {
   };
 
   return (
-    <>
-      <div className="min-h-screen bg-black text-gray-200">
+    <div className="flex flex-col gap-5">
+      <h1 className="text-transparent text-5xl font-bold leading-tight bg-clip-text bg-gradient-to-br from-orange-500 to-orange-700 text-center dark:from-orange-300 dark:to-orange-500">
+        {data?.name} Details
+      </h1>
+      <div className="min-h-screen bg-background text-foreground">
         <div className="max-w-7xl mx-auto px-4 py-8">
           <div className="grid lg:grid-cols-2 gap-12">
             <div className="relative group">
@@ -39,12 +42,12 @@ export default function DetailsPageSupes(): React.ReactNode {
                   className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
                 />
               </div>
-              <div className="absolute top-4 right-4 bg-black/80 backdrop-blur-sm px-4 py-2 rounded-full flex items-center space-x-2">
-                <Trophy className="h-5 w-5 text-gray-300" />
-                <span className="text-gray-300 font-semibold">{data?.id}</span>
+              <div className="absolute top-4 right-4 bg-muted backdrop-blur-sm px-4 py-2 rounded-full flex items-center space-x-2">
+                <Trophy className="h-5 w-5 text-muted-foreground" />
+                <span className="text-muted-foreground font-semibold">{data?.id}</span>
               </div>
               <div className="mt-5">
-                <h2 className="text-xl font-semibold text-white mb-4">
+                <h2 className="text-xl font-semibold text-foreground mb-4">
                   Character Info
                 </h2>
                 <div className="flex flex-wrap gap-3">
@@ -75,12 +78,12 @@ export default function DetailsPageSupes(): React.ReactNode {
             <div className="space-y-8">
               <div>
                 <div className="flex items-center space-x-4 mb-4">
-                  <Shield className="h-10 w-10 text-gray-400" />
-                  <h1 className="text-4xl font-bold text-white">
+                  <Shield className="h-10 w-10 text-muted-foreground" />
+                  <h1 className="text-4xl font-bold text-foreground">
                     {data?.name}
                   </h1>
                 </div>
-                <p className="text-lg text-gray-400 leading-relaxed">
+                <p className="text-lg text-muted-foreground leading-relaxed">
                   {data?.connections?.["group-affiliation"]}
                 </p>
               </div>
@@ -151,6 +154,6 @@ export default function DetailsPageSupes(): React.ReactNode {
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 }
