@@ -2,7 +2,7 @@ import { Badge } from "@/components/ui/badge";
 import { Skeleton } from "@/components/ui/skeleton";
 import StatCard from "@/components/Web/HeroDetails";
 import { FetchSuperHeroDetailsQueryid } from "@/Hooks/FetchSuperHeroDetails";
-import { Shield, Trophy } from "lucide-react";
+import { Shield, StampIcon, Trophy } from "lucide-react";
 import React from "react";
 import { useParams } from "react-router-dom";
 
@@ -99,7 +99,7 @@ export default function DetailsPageSupes(): React.ReactNode {
                         <StatCard
                           label={toUp(item)}
                           value={Number(statValue)}
-                          icon={<></>}
+                          icon={<StampIcon />}
                         />
                       </div>
                     );
