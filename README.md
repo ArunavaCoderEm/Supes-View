@@ -110,6 +110,13 @@ List of the key features of **SupesView** and why it is efficient:
 
 ## Screenshots
 
+![Screenshot 2024-11-23 at 03-38-28 SupesView](https://github.com/user-attachments/assets/d085f12c-22a2-4154-9d63-9979488c7940)
+![Screenshot 2024-11-23 at 03-38-14 SupesView](https://github.com/user-attachments/assets/0fb0e132-cb0e-462f-8857-9bd2064849d7)
+![Screenshot 2024-11-23 at 03-37-50 SupesView](https://github.com/user-attachments/assets/cdcfff78-471d-4c15-8e41-910c37a99424)
+![Screenshot 2024-11-23 at 03-37-22 SupesView](https://github.com/user-attachments/assets/5c8a7095-28b3-4c25-9eaf-b1eb50fecca5)
+![Screenshot 2024-11-23 at 03-37-01 SupesView](https://github.com/user-attachments/assets/c9515266-fc1d-4803-adc4-7de9fe39ac9b)
+![Screenshot 2024-11-23 at 03-36-46 SupesView](https://github.com/user-attachments/assets/ca841ada-5d2b-4411-87eb-c69ea704fbfb)
+
 
 
 ## Contribution
