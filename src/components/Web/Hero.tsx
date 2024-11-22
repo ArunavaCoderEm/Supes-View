@@ -1,6 +1,7 @@
 import React from "react";
 import { ChevronRight, Shield } from "lucide-react";
 import { Button } from "../ui/button";
+import { Badge } from "../ui/badge";
 
 export default function Hero(): React.ReactNode {
   return (
@@ -10,10 +11,12 @@ export default function Hero(): React.ReactNode {
           <div className="flex flex-col lg:flex-row items-center justify-between gap-12">
             <div className="lg:w-1/2 space-y-8">
               <div className="flex items-center space-x-2">
-                <Shield className="w-6 h-6 text-orange-500" />
-                <span className="text-orange-500 font-semibold">
-                  GOTHAM'S GUARDIAN
-                </span>
+                <Badge className="flex gap-2 px-4 shadow-md py-1">
+                  <Shield className="w-6 h-6" />
+                  <span className="rounded-lg font-semibold">
+                    GOTHAM'S GUARDIAN
+                  </span>
+                </Badge>
               </div>
 
               <h1 className="text-5xl lg:text-7xl font-bold text-black dark:text-white leading-tight">
