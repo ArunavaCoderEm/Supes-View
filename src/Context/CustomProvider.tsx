@@ -22,7 +22,9 @@ export default function CustomProvider({
     <QueryClientProvider client={queryClient}>
       <BrowserRouter>
         <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
-          <StrictMode>{children}</StrictMode>
+          <StrictMode>
+            {children}
+          </StrictMode>
         </ThemeProvider>
       </BrowserRouter>
     </QueryClientProvider>
