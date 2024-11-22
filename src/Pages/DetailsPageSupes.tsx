@@ -1,10 +1,14 @@
 import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
 import { Skeleton } from "@/components/ui/skeleton";
 import StatCard from "@/components/Web/HeroDetails";
 import { FetchSuperHeroDetailsQueryid } from "@/Hooks/FetchSuperHeroDetails";
-import { Shield, StampIcon, Trophy } from "lucide-react";
+import { UseFav } from "@/Hooks/UseFav";
+import { Superhero } from "@/Types/types";
+import { Shield, StampIcon, Star, Trophy } from "lucide-react";
 import React from "react";
 import { useParams } from "react-router-dom";
+import { toast } from "sonner";
 
 export default function DetailsPageSupes(): React.ReactNode {
   const { id } = useParams();
@@ -12,6 +16,8 @@ export default function DetailsPageSupes(): React.ReactNode {
   const { data, isLoading, isError, error } = FetchSuperHeroDetailsQueryid(
     Number(id) ?? 0
   );
+
+  const { addFavs, removeFav, isFav } = UseFav();
 
   if (isError) {
     console.log(error);
@@ -24,6 +30,22 @@ export default function DetailsPageSupes(): React.ReactNode {
   const toUp = (s: string) => {
     const news: string = s[0].toUpperCase() + s.slice(1);
     return news;
+  };
+
+  const isfavourite = isFav(data?.id);
+
+  console.log(isfavourite)
+
+  const handleFavs = (data: Superhero | null | undefined) => {
+    if (isfavourite) {
+      removeFav.mutate(data?.id);
+      toast.error("Removed From Favs");
+    } else {
+      addFavs.mutate({
+        ...data,
+      });
+      toast.success("Added To Favs");
+    }
   };
 
   return (
@@ -44,7 +66,9 @@ export default function DetailsPageSupes(): React.ReactNode {
               </div>
               <div className="absolute top-4 right-4 bg-muted backdrop-blur-sm px-4 py-2 rounded-full flex items-center space-x-2">
                 <Trophy className="h-5 w-5 text-muted-foreground" />
-                <span className="text-muted-foreground font-semibold">{data?.id}</span>
+                <span className="text-muted-foreground font-semibold">
+                  {data?.id}
+                </span>
               </div>
               <div className="mt-5">
                 <h2 className="text-xl font-semibold text-foreground mb-4">
@@ -82,6 +106,15 @@ export default function DetailsPageSupes(): React.ReactNode {
                   <h1 className="text-4xl font-bold text-foreground">
                     {data?.name}
                   </h1>
+                  <Button
+                    variant={isfavourite ? "default" : "outline"}
+                    className={
+                      isfavourite ? "bg-yellow-500 hover:bg-yellow-600" : ""
+                    }
+                    onClick={() => handleFavs(data)}
+                  >
+                    <Star /> {isfavourite ? "Remove" : "Add"}
+                  </Button>
                 </div>
                 <p className="text-lg text-muted-foreground leading-relaxed">
                   {data?.connections?.["group-affiliation"]}

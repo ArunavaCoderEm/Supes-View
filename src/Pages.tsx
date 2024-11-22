@@ -6,6 +6,7 @@ import BackgroundGrid from "./components/Syntax/BackGroundGrid";
 import { useTheme } from "./Context/Theme-Provider";
 import Footer from "./components/Syntax/Footer";
 import DetailsPageSupes from "./Pages/DetailsPageSupes";
+import { Toaster } from "sonner";
 
 export default function Pages(): React.ReactNode {
   const { theme } = useTheme();
@@ -21,6 +22,7 @@ export default function Pages(): React.ReactNode {
             <Route path={"/details/:id"} element={<DetailsPageSupes />} />
           </Routes>
         </div>
+        <Toaster richColors />
       </div>
       <Footer />
     </>

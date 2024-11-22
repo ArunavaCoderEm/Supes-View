@@ -38,8 +38,8 @@ export function UseFav() {
   });
 
   const removeFav = useMutation({
-    mutationFn: async (supeid: string | number) => {
-      const filteredFavsRem = favs.filter((item) => item.id == supeid);
+    mutationFn: async (supeid: string | undefined) => {
+      const filteredFavsRem = favs.filter((item) => item.id !== supeid);
       setFavs(filteredFavsRem);
       return filteredFavsRem;
     },
@@ -54,8 +54,7 @@ export function UseFav() {
     favs: favourite?.data ?? [],
     addFavs,
     removeFav,
-    isFav: (supeId: number | string) => {
-        favs.some((item) => item.id === supeId)
-    }
+    isFav: (supeId: undefined | string | number) =>
+      favs.some((item) => item.id === supeId),
   };
 }
