@@ -3,7 +3,6 @@ import { ChevronRight, Shield } from "lucide-react";
 import { Button } from "../ui/button";
 
 export default function Hero(): React.ReactNode {
-
   return (
     <>
       <div className="relative min-h-screen">
@@ -19,8 +18,20 @@ export default function Hero(): React.ReactNode {
 
               <h1 className="text-5xl lg:text-7xl font-bold text-black dark:text-white leading-tight">
                 Vengeance Has <br />
-                <span className="text-transparent bg-clip-text bg-gradient-to-br from-orange-500 to-orange-700 dark:from-orange-300 dark:to-orange-500"> A New Name :</span>
+                <span className="text-transparent bg-clip-text bg-gradient-to-br from-orange-500 to-orange-700 dark:from-orange-300 dark:to-orange-500">
+                  {" "}
+                  A New Name :
+                </span>
               </h1>
+
+              <div className="border rounded-md shadow-md p-6 bg-muted">
+                <blockquote className="text-lg font-medium text-foreground">
+                  "Everyone has weaknesses, but I choose to hide mine."
+                </blockquote>
+                <p className="mt-4 text-sm text-muted-foreground text-right">
+                  — Batman
+                </p>
+              </div>
 
               <p className="text-muted-foreground text-lg max-w-xl">
                 Step into the shadows of Gotham City, where justice wears a cape
@@ -29,33 +40,25 @@ export default function Hero(): React.ReactNode {
               </p>
 
               <div className="flex flex-col sm:flex-row gap-4">
-                <Button className="px-8 py-4 bg-gradient-to-b from-orange-500 to-orange-700 font-semibold transition-colors flex items-center justify-center">
+                <Button className="px-8 shadow-md py-4 bg-gradient-to-b hover:scale-95 from-orange-500 to-orange-700 font-semibold transition-all duration-200 flex items-center justify-center">
                   Get Details
                   <ChevronRight className="w-5 h-5" />
                 </Button>
-                <Button variant={"outline"} className="px-8 py-4 border-2 rounded-lg font-semibold transition-all flex items-center justify-center">
+                <Button
+                  variant={"outline"}
+                  className="px-8 py-4 shadow-md border-2 rounded-lg font-semibold transition-all flex items-center justify-center"
+                >
                   Explore More
                 </Button>
               </div>
             </div>
-          </div>
-        </div>
-
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-20">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-            {[
-              { label: "Years Active", value: "80+" },
-              { label: "Villains Caught", value: "1000+" },
-              { label: "Gadgets", value: "250+" },
-              { label: "Combat Styles", value: "127" },
-            ].map((stat, index) => (
-              <div key={index} className="text-center">
-                <div className="text-4xl font-bold text-yellow-500">
-                  {stat.value}
-                </div>
-                <div className="text-gray-400 mt-2">{stat.label}</div>
-              </div>
-            ))}
+            <div className="lg:w-1/2 w-full flex justify-center space-y-8">
+              <img
+                src="/Images/batman_hero_pic.jpeg"
+                alt="batmanpic"
+                className="w-full max-w-lg shadow-lg lg:max-w-full h-80 lg:h-[32rem] object-cover rounded-lg"
+              />
+            </div>
           </div>
         </div>
       </div>

@@ -9,7 +9,7 @@ export default function Navbar(): React.ReactNode {
 
   return (
     <>
-      <nav className="fixed top-0 left-0 right-0 backdrop-blur-md z-50">
+      <nav className="fixed top-0 left-0 right-0 backdrop-blur-md bg-background/80 z-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
             <div className="flex items-center">
@@ -26,7 +26,7 @@ export default function Navbar(): React.ReactNode {
               <div
                 className={`cursor-pointer transition-all duration-500 flex items-center
                     ${theme === "dark" ? "rotate-180" : "rotate-0"}
-                    `}
+                `}
               >
                 {theme === "dark" ? (
                   <Button
