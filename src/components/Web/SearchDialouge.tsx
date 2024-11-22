@@ -9,16 +9,28 @@ import {
   CommandSeparator,
 } from "../ui/command";
 import { Button } from "../ui/button";
-import { Loader2, Search, SearchIcon } from "lucide-react";
+import { Clock, Loader2, Search, SearchIcon, XCircle } from "lucide-react";
 import { FetchSuperHeroDetailsQuerySearch } from "@/Hooks/FetchSuperHeroDetails";
 import { useNavigate } from "react-router-dom";
+import { UseSearchHIstory } from "@/Hooks/UseSearchHIstory";
 
 export default function SearchDialouge(): React.ReactNode {
   const [open, setOpen] = useState<boolean>(false);
 
+  const { history, addHistory, clearHistory } = UseSearchHIstory();
+
   const [query, setQuery] = useState<string>("");
 
   const nav = useNavigate();
+
+  const handleSelectItem = (item: any): void => {
+    addHistory.mutate({
+      ...item
+    });
+
+    nav(`/details/${item?.id}`);
+    setOpen(false);
+  };
 
   const { data, isLoading, isError, error } =
     FetchSuperHeroDetailsQuerySearch(query);
@@ -54,11 +66,34 @@ export default function SearchDialouge(): React.ReactNode {
             </CommandItem>
           </CommandGroup>
           <CommandSeparator />
-          <CommandGroup className="my-2" heading="Favourites">
-            <CommandItem>
-              <span>Calendar</span>
-            </CommandItem>
-          </CommandGroup>
+          {history.length > 0 && (
+            <CommandGroup className="my-2">
+              <div className="flex flex-row justify-between items-center">
+                <p className="text-foreground">Recent Searches</p>
+                <Button
+                  variant={"ghost"}
+                  size={"sm"}
+                  onClick={() => {clearHistory.mutate(); setOpen(false)}}
+                  className="text-foreground"
+                >
+                  <XCircle className="w-4 h-4 text-muted-foreground" />
+                  Clear History
+                </Button>
+              </div>
+              {history.map((item, index) => {
+                return (
+                  <CommandItem
+                    className="cursor-pointer"
+                    onSelect={() => handleSelectItem(item)}
+                    key={index}
+                  >
+                    <Clock className="w-4 h-4 text-muted-foreground" />
+                    <span>{item?.name}</span>
+                  </CommandItem>
+                );
+              })}
+            </CommandGroup>
+          )}
           <CommandSeparator />
           {data && data?.length > 0 && (
             <CommandGroup className="my-2" heading="Suggessions">
@@ -69,7 +104,11 @@ export default function SearchDialouge(): React.ReactNode {
               )}
               {data?.map((item, index) => {
                 return (
-                  <CommandItem className="cursor-pointer" onSelect={() => {nav(`/details/${item?.id}`); setOpen(false)}} key={index}>
+                  <CommandItem
+                    className="cursor-pointer"
+                    onSelect={() => handleSelectItem(item)}
+                    key={index}
+                  >
                     <SearchIcon className="w-4 h-4 text-muted-foreground" />
                     <span>{item?.name}</span>
                   </CommandItem>

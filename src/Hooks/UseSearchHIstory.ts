@@ -19,8 +19,7 @@ export function UseSearchHIstory() {
   const addHistory = useMutation({
     mutationFn: async (search: any) => {
         const newSearch = {
-            ...search,
-            id: `${search?.id}${Date.now()}`
+            ...search
         }
 
         const filteredHis = store.filter((item) => !(item.id === search.id))
