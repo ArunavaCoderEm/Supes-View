@@ -7,8 +7,8 @@ import {
   CommandItem,
   CommandList,
   CommandSeparator,
-} from "../UI/command";
-import { Button } from "../UI/button";
+} from "../ui/command";
+import { Button } from "../ui/button";
 import { Search } from "lucide-react";
 
 export default function SearchDialouge(): React.ReactNode {

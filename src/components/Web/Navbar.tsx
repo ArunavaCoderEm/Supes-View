@@ -1,5 +1,5 @@
 import React from "react";
-import { Button } from "../UI/button";
+import { Button } from "../ui/button";
 import { useTheme } from "@/Context/Theme-Provider";
 import { Moon, Sun } from "lucide-react";
 import SearchDialouge from "./SearchDialouge";

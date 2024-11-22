@@ -1,6 +1,6 @@
 import React from "react";
 import { ChevronRight, Shield } from "lucide-react";
-import { Button } from "../UI/button";
+import { Button } from "../ui/button";
 
 export default function Hero(): React.ReactNode {
   return (
