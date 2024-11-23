@@ -102,7 +102,7 @@ export default function HomeBelowHero(): React.ReactNode {
         )}
         {!isLoading && data && !isError && !load && (
           <div className="mx-auto w-fit">
-            <div className="flex justify-between items-end">
+            <div className="flex md:flex-row flex-col md:justify-between justify-center md:items-end gap-2 items-center">
               <h1 className="mt-4 text-transparent text-5xl font-bold leading-tight bg-clip-text bg-gradient-to-br from-orange-500 to-orange-700 dark:from-orange-300 dark:to-orange-500">
                 Top Superheroes Today:
               </h1>
