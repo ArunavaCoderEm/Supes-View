@@ -17,10 +17,17 @@ import { Link } from "react-router-dom";
 
 export default function HomeBelowHero(): React.ReactNode {
 
-  const { data, isLoading, isError, error } = FetchRandomSupesN(12);
+  const wholeData = FetchRandomSupesN(12);
+  const { data, isLoading, isError, error } = wholeData;
 
-  const handleClick = () => {
-    FetchRandomSupesN(12).refetch();
+  const [load, setload] = useState<boolean>(false);
+
+
+  const handleClick = async () => {
+    setload(true);
+    await new Promise((resolve) => setTimeout(resolve, 300));
+    wholeData.refetch();
+    setload(false)
   }
 
   const { favs } = UseFav();
@@ -93,14 +100,14 @@ export default function HomeBelowHero(): React.ReactNode {
             })}
           </div>
         )}
-        {!isLoading && data && !isError && (
+        {!isLoading && data && !isError && !load && (
           <div className="mx-auto w-fit">
             <div className="flex justify-between items-end">
               <h1 className="mt-4 text-transparent text-5xl font-bold leading-tight bg-clip-text bg-gradient-to-br from-orange-500 to-orange-700 dark:from-orange-300 dark:to-orange-500">
                 Top Superheroes Today:
               </h1>
               <Button onClick={handleClick} className="mb-2">
-                <RefreshCcw className={`${isLoading ? "animate-spin" : ""} dark:text-black text-white`} />
+                <RefreshCcw className={`${load ? "animate-spin" : ""} dark:text-black text-white`} />
               </Button>
             </div>
             <div className="grid mt-10 md:grid-cols-3 mx-auto w-full grid-cols-2 lg:grid-cols-4 gap-4">
@@ -160,7 +167,7 @@ export default function HomeBelowHero(): React.ReactNode {
         )}
       </div>
 
-      {isLoading && (
+      {(isLoading || load) && (
         <div className="grid md:grid-cols-3 grid-cols-1 lg:grid-cols-4 gap-4">
           {Array.from({ length: 4 }).map((_, index) => (
             <Skeleton key={index} className="h-[125px] w-[250px] left-0 right-0 mx-auto rounded-xl" />
