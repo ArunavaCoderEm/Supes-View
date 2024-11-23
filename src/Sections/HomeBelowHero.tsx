@@ -11,11 +11,17 @@ import {
 import { Skeleton } from "@/components/ui/skeleton";
 import { FetchRandomSupesN } from "@/Hooks/FetchSuperHeroDetails";
 import { UseFav } from "@/Hooks/UseFav";
+import { RefreshCcw } from "lucide-react";
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
 export default function HomeBelowHero(): React.ReactNode {
+
   const { data, isLoading, isError, error } = FetchRandomSupesN(12);
+
+  const handleClick = () => {
+    FetchRandomSupesN(12).refetch();
+  }
 
   const { favs } = UseFav();
 
@@ -24,6 +30,12 @@ export default function HomeBelowHero(): React.ReactNode {
   const loadMore = () => {
     if (!isLoading) {
       setVisibleCount(data?.length || 0);
+    }
+  };
+
+  const showless = () => {
+    if (!isLoading) {
+      setVisibleCount(4);
     }
   };
 
@@ -38,7 +50,11 @@ export default function HomeBelowHero(): React.ReactNode {
           Your Favourite Superheroes :
         </h1>
 
-        {!favs.length && <p className="text-foreground px-2 mt-5 text-lg">No Favourites, Add Some !!</p>}
+        {!favs.length && (
+          <p className="text-foreground px-2 mt-5 text-lg">
+            No Favourites, Add Some !!
+          </p>
+        )}
 
         {!isLoading && favs && !isError && (
           <div className="grid mt-10 md:grid-cols-3 grid-cols-2 lg:grid-cols-4 gap-4">
@@ -77,17 +93,22 @@ export default function HomeBelowHero(): React.ReactNode {
             })}
           </div>
         )}
-        <h1 className="mt-4 text-transparent text-5xl font-bold leading-tight bg-clip-text bg-gradient-to-br from-orange-500 to-orange-700 dark:from-orange-300 dark:to-orange-500">
-          Top Superheroes Today:
-        </h1>
         {!isLoading && data && !isError && (
-          <div>
-            <div className="grid mt-10 md:grid-cols-3 grid-cols-2 lg:grid-cols-4 gap-4">
+          <div className="mx-auto w-fit">
+            <div className="flex justify-between items-end">
+              <h1 className="mt-4 text-transparent text-5xl font-bold leading-tight bg-clip-text bg-gradient-to-br from-orange-500 to-orange-700 dark:from-orange-300 dark:to-orange-500">
+                Top Superheroes Today:
+              </h1>
+              <Button onClick={handleClick} className="mb-2">
+                <RefreshCcw className={`${isLoading ? "animate-spin" : ""} dark:text-black text-white`} />
+              </Button>
+            </div>
+            <div className="grid mt-10 md:grid-cols-3 mx-auto w-full grid-cols-2 lg:grid-cols-4 gap-4">
               {data &&
                 data?.length &&
                 data.slice(0, visibleCount).map((item, index) => (
                   <Link to={`/details/${item.id}`} key={index}>
-                    <Card>
+                    <Card className="mx-auto h-[31rem]">
                       <CardHeader>
                         <img
                           src={item?.image?.url}
@@ -125,14 +146,24 @@ export default function HomeBelowHero(): React.ReactNode {
                 </Button>
               </div>
             )}
+            {visibleCount >= data.length && (
+              <div className="mt-4 text-center">
+                <Button
+                  onClick={showless}
+                  className="px-4 py-2 shadow-lg bg-muted text-orange-500"
+                >
+                  Show Less
+                </Button>
+              </div>
+            )}
           </div>
         )}
       </div>
 
       {isLoading && (
-        <div className="grid md:grid-cols-3 grid-cols-2 lg:grid-cols-5 gap-4">
-          {Array.from({ length: 5 }).map((_, index) => (
-            <Skeleton key={index} className="h-[125px] w-[250px] rounded-xl" />
+        <div className="grid md:grid-cols-3 grid-cols-1 lg:grid-cols-4 gap-4">
+          {Array.from({ length: 4 }).map((_, index) => (
+            <Skeleton key={index} className="h-[125px] w-[250px] left-0 right-0 mx-auto rounded-xl" />
           ))}
         </div>
       )}
