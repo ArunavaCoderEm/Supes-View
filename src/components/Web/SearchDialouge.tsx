@@ -67,7 +67,7 @@ export default function SearchDialouge(): React.ReactNode {
           placeholder="Type a superhero or search..."
         />
         <CommandList>
-          {query.length > 2 && !isLoading && (
+          {query.length <= 0 && !isLoading && (
             <CommandEmpty>No hero found.</CommandEmpty>
           )}
           <CommandSeparator />
@@ -96,7 +96,7 @@ export default function SearchDialouge(): React.ReactNode {
                         variant={"destructive"}
                         className="rounded-full"
                       >
-                        <XCircle className="w-4 h-4 text-muted-foreground" />
+                        <XCircle className="w-4 h-4 text-black dark:text-white" />
                       </Button>
                     </div>
                   );
