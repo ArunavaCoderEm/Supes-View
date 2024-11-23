@@ -50,7 +50,7 @@ export default function HomeBelowHero(): React.ReactNode {
 
   return (
     <>
-      <div className="my-10 container">
+      <div className="my-10">
         <h1 className="mt-4 text-transparent text-5xl font-bold leading-tight bg-clip-text bg-gradient-to-br from-orange-500 to-orange-700 dark:from-orange-300 dark:to-orange-500">
           Your Favourite Superheroes :
         </h1>
@@ -62,7 +62,7 @@ export default function HomeBelowHero(): React.ReactNode {
         )}
 
         {!isLoading && favs && !isError && (
-          <div className="grid mt-10 md:grid-cols-3 grid-cols-2 lg:grid-cols-4 gap-4">
+          <div className="grid mt-10 md:grid-cols-3 grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
             {favs.map((item, index) => {
               return (
                 <>
@@ -99,7 +99,7 @@ export default function HomeBelowHero(): React.ReactNode {
           </div>
         )}
         {!isLoading && data && !isError && (
-          <div className="mx-auto w-fit">
+          <div className="mx-auto w-full">
             <div className="flex md:flex-row flex-col md:justify-between justify-center md:items-end gap-2 items-center">
               <h1 className="mt-4 text-transparent text-5xl font-bold leading-tight bg-clip-text bg-gradient-to-br from-orange-500 to-orange-700 dark:from-orange-300 dark:to-orange-500">
                 Top Superheroes Today:
@@ -112,11 +112,11 @@ export default function HomeBelowHero(): React.ReactNode {
                 />
               </Button>
             </div>
-            <div className="grid mt-10 md:grid-cols-3 mx-auto w-full grid-cols-2 lg:grid-cols-4 gap-4">
+            <div className="grid mt-10 md:grid-cols-3 mx-auto w-full grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
               {data &&
                 data?.length && !load &&
                 data.slice(0, visibleCount).map((item, index) => (
-                  <Link to={`/details/${item.id}`} key={index}>
+                  <Link className="w-full mx-auto flex items-center justify-center" to={`/details/${item.id}`} key={index}>
                     <Card className="mx-auto h-[31rem]">
                       <CardHeader>
                         <img
