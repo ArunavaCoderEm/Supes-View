@@ -120,6 +120,7 @@ export default function SearchDialouge(): React.ReactNode {
                   onClick={() => {
                     clearHistory.mutate();
                     setOpen(false);
+                    toast.error("Cleared History !")
                   }}
                   className="text-foreground"
                 >
@@ -144,7 +145,7 @@ export default function SearchDialouge(): React.ReactNode {
           <CommandSeparator />
           {data && data?.length > 0 && (
             <CommandGroup className="my-2" heading="Suggessions">
-              {isLoading && (
+              {(isLoading) && (
                 <div className="p-3 flex justify-center items-center">
                   <Loader2 className="w-4 h-4 animate-spin text-muted-foreground" />
                 </div>
