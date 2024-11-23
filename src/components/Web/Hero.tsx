@@ -8,6 +8,13 @@ export default function Hero(): React.ReactNode {
 
   const nav = useNavigate();
 
+  const exploremore = () => {
+    window.scrollTo({
+      behavior: "smooth",
+      top: 1000
+    })
+  }
+
   return (
     <>
       <div className="flex flex-col lg:flex-row items-center justify-between gap-12">
@@ -50,6 +57,7 @@ export default function Hero(): React.ReactNode {
               <ChevronRight className="w-5 h-5" />
             </Button>
             <Button
+              onClick={() => exploremore()}
               variant={"outline"}
               className="px-8 py-4 outline-2 outline-offset-0 outline-background shadow-md border-2 rounded-lg font-semibold transition-all flex items-center justify-center"
             >
